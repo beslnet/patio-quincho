@@ -1,0 +1,450 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Planos Quincho en L</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#EFEEE9; --surface:#FBFAF7; --ink:#26241F; --muted:#6E6A5F; --line:#D9D6CC;
+  --wood:#A97B4F; --wood-deep:#7C5633;
+  --pasto:#557F3F; --pasto-fill:#DFE9D2;
+  --porc-fill:#E4E2DB; --porc-line:#C7C4BA;
+  --deck:#8A6A4E; --deck-fill:#C7A886;
+  --ocre:#C9A65C; --wall:#B5B2A8; --glass:#7FA3B5; --zinc:#6B6F73;
+  --warn:#8A6420; --warn-bg:#F3EAD4;
+  --shadow:0 1px 3px rgba(38,36,31,.08);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#1D1B17; --surface:#26241F; --ink:#ECE8DE; --muted:#A29C8D; --line:#3B3830;
+    --wood:#C08F5F; --wood-deep:#D3A876;
+    --pasto:#8AB36A; --pasto-fill:#2C3823;
+    --porc-fill:#2E2C26; --porc-line:#45423A;
+    --deck:#A5825F; --deck-fill:#5C4832;
+    --ocre:#B8964F; --wall:#57544B; --glass:#6E93A6; --zinc:#8C9094;
+    --warn:#D9B36A; --warn-bg:#332B1B;
+    --shadow:0 1px 3px rgba(0,0,0,.4);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#1D1B17; --surface:#26241F; --ink:#ECE8DE; --muted:#A29C8D; --line:#3B3830;
+  --wood:#C08F5F; --wood-deep:#D3A876;
+  --pasto:#8AB36A; --pasto-fill:#2C3823;
+  --porc-fill:#2E2C26; --porc-line:#45423A;
+  --deck:#A5825F; --deck-fill:#5C4832;
+  --ocre:#B8964F; --wall:#57544B; --glass:#6E93A6; --zinc:#8C9094;
+  --warn:#D9B36A; --warn-bg:#332B1B;
+  --shadow:0 1px 3px rgba(0,0,0,.4);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Instrument Sans",system-ui,sans-serif;line-height:1.55;font-size:16px}
+.wrap{max-width:1080px;margin:0 auto;padding:40px 24px 72px}
+header.top{border-bottom:2px solid var(--ink);padding-bottom:20px;margin-bottom:8px}
+.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
+h1{font-family:Sora,system-ui,sans-serif;font-weight:700;font-size:clamp(30px,5vw,46px);margin:0;line-height:1.08;text-wrap:balance}
+.sub{color:var(--muted);max-width:64ch;margin:14px 0 0}
+h2{font-family:Sora,system-ui,sans-serif;font-weight:600;font-size:21px;margin:0 0 6px;text-wrap:balance}
+h3{font-size:15px;margin:0}
+.secnum{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--wood-deep);letter-spacing:.12em}
+section{margin-top:48px}
+section > p.lede{color:var(--muted);max-width:68ch;margin:4px 0 20px}
+.grid-plan{display:grid;grid-template-columns:minmax(300px,470px) 1fr;gap:28px;align-items:start}
+@media (max-width:780px){.grid-plan{grid-template-columns:1fr}}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:18px;box-shadow:var(--shadow)}
+svg{display:block;width:100%;height:auto}
+svg text{font-family:"IBM Plex Mono",monospace}
+.dim{stroke:var(--muted);stroke-width:1;fill:none}
+.dimtxt{fill:var(--muted);font-size:10.5px}
+.zonelbl{fill:var(--ink);font-size:11px;font-weight:600;letter-spacing:.08em}
+.zonesub{fill:var(--muted);font-size:9.5px}
+.outwall{fill:none;stroke:var(--ink);stroke-width:3}
+.legend{display:flex;flex-direction:column;gap:10px;margin:0;padding:0;list-style:none}
+.legend li{display:flex;gap:12px;align-items:flex-start}
+.chip{width:26px;height:26px;flex:none;border-radius:3px;border:1px solid var(--line);margin-top:2px}
+.legend b{display:block;font-size:14.5px}
+.legend span{font-size:13.5px;color:var(--muted)}
+.tablewrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:14px;font-variant-numeric:tabular-nums}
+th{text-align:left;font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:500;padding:8px 10px;border-bottom:2px solid var(--ink)}
+td{padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+td.num{font-family:"IBM Plex Mono",monospace;white-space:nowrap;text-align:right}
+td.num.qty{white-space:normal;width:17%;font-size:12.5px}
+tr.group td{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--wood-deep);border-bottom:1px solid var(--ink);padding-top:18px}
+tr.total td{border-bottom:2px solid var(--ink);border-top:2px solid var(--ink);font-weight:600}
+.tag{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:1px 6px;border-radius:3px;border:1px solid var(--line);color:var(--muted);margin-left:6px;white-space:nowrap}
+.tag.est{border-color:var(--warn);color:var(--warn)}
+.swatches{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px}
+.sw{background:var(--surface);border:1px solid var(--line);border-radius:6px;overflow:hidden;box-shadow:var(--shadow)}
+.sw .c{height:58px}
+.sw .t{padding:10px 12px}
+.sw b{display:block;font-size:13.5px}
+.sw span{font-size:12.5px;color:var(--muted)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:16px 18px;box-shadow:var(--shadow)}
+.card ul{margin:8px 0 0;padding-left:18px;font-size:14px;color:var(--muted)}
+.card li{margin-bottom:5px}
+.card li b{color:var(--ink);font-weight:600}
+.link3d{display:flex;gap:18px;align-items:center;justify-content:space-between;flex-wrap:wrap;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--wood);border-radius:6px;padding:16px 20px;box-shadow:var(--shadow)}
+.link3d p{margin:0;max-width:62ch;color:var(--muted);font-size:14.5px}
+.link3d a{font-weight:600;color:var(--wood-deep);text-decoration:none;border-bottom:1.5px solid currentColor;white-space:nowrap}
+.link3d a:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.flag{background:var(--warn-bg);border:1px solid var(--warn);border-radius:6px;padding:14px 16px;font-size:14.5px;margin-top:16px}
+.flag b{color:var(--warn)}
+.next{border-left:3px solid var(--wood);padding:4px 0 4px 18px}
+.next p{margin:8px 0;max-width:70ch}
+.capt{font-size:13px;color:var(--muted);margin:12px 2px 0;max-width:82ch}
+.capt a, .src a{color:var(--wood-deep)}
+.src{font-size:12.5px;color:var(--muted);margin-top:14px;max-width:90ch}
+footer{margin-top:56px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:13px;font-family:"IBM Plex Mono",monospace}
+</style>
+
+<div class="wrap">
+<header class="top">
+  <p class="eyebrow">Planos para cotizar · V4 · Octubre 2026</p>
+  <h1>Quincho en L</h1>
+  <p class="sub">Remodelación del patio trasero: 10,00 m de largo, en L de 3,70 / 4,70 m. Quincho de
+  obra techado con parrilla, campana, lavacopas y refrigerador en la L; techo fijo opaco sobre toda
+  la pérgola; porcelanato en todo lo techado; pasto contra el muro, y la terraza de estar conservada.</p>
+</header>
+
+<section>
+  <p class="secnum">01 — CONCEPTO</p>
+  <h2>Tres zonas, cada una con un solo trabajo</h2>
+  <p class="lede"><b>El quincho, al fondo y bajo techo, resuelve todo lo de cocina:</b> asar, preparar,
+  lavar, refrigerar y guardar, con lluvia o sin ella. <b>El pasto</b>, al medio y contra el muro, es el
+  respiro verde y al aire libre. <b>La terraza</b>, junto al ventanal, queda solo para sentarse,
+  conversar y pasar el rato. El pasillo de porcelanato bajo la pérgola une las tres sin cruzar el
+  pasto. Todo en tres materiales protagonistas más la madera existente.</p>
+  <div class="link3d">
+    <p><b>La geometría vigente es la del recorrido 3D</b> (archivo <i>recorrido-quincho-3d.html</i>, enviado junto con este). Ahí se camina el patio en primera persona,
+    se compara la iluminación y la decoración, y con la tecla R se hace llover para ver qué queda bajo
+    techo.</p>
+    <a href="recorrido-quincho-3d.html">Abrir el recorrido 3D →</a>
+  </div>
+</section>
+
+<section>
+  <p class="secnum">02 — PLANTA</p>
+  <h2>Plano de planta</h2>
+  <p class="lede">Visto desde arriba, con el fondo arriba y la casa a la derecha. La línea segmentada
+  marca todo lo que queda bajo techo: lo único al aire libre es el pasto.</p>
+
+  <div class="grid-plan">
+  <div class="panel">
+  <svg viewBox="0 -12 470 724" role="img" aria-label="Plano de planta del patio con el quincho techado en L">
+    <defs>
+      <pattern id="porc" width="33.6" height="33.6" patternUnits="userSpaceOnUse">
+        <rect width="33.6" height="33.6" fill="var(--porc-fill)"/>
+        <path d="M33.6 0H0V33.6" fill="none" stroke="var(--porc-line)" stroke-width="1"/>
+      </pattern>
+      <pattern id="deckp" width="8" height="8" patternUnits="userSpaceOnUse">
+        <rect width="8" height="8" fill="var(--deck-fill)"/>
+        <line x1="0" y1="0" x2="0" y2="8" stroke="var(--deck)" stroke-width="1.4"/>
+      </pattern>
+    </defs>
+
+    <!-- piso de porcelanato -->
+    <path d="M90 46 H297.2 V298 H353.2 V606 H90 Z" fill="url(#porc)"/>
+    <!-- pasto 2,50 × 5,80, de 1,60 a 7,40 m -->
+    <rect x="90" y="135.6" width="140" height="324.8" fill="var(--pasto-fill)" stroke="var(--pasto)" stroke-width="1.5"/>
+    <rect x="230" y="135.6" width="6.7" height="324.8" fill="var(--muted)" opacity=".5"/>
+
+    <!-- quincho: corrida al fondo -->
+    <rect x="90" y="46" width="207.2" height="33.6" fill="url(#deckp)" stroke="var(--wood-deep)" stroke-width="1.5"/>
+    <rect x="165.6" y="46" width="56" height="36.96" fill="var(--porc-fill)" stroke="var(--ink)" stroke-width="1.4"/>
+    <rect x="175" y="50" width="37" height="22" fill="var(--ink)" opacity=".82"/>
+    <rect x="186" y="46" width="15" height="9" fill="var(--ink)"/>
+    <!-- L con lavacopas -->
+    <rect x="263.6" y="79.6" width="33.6" height="37.5" fill="url(#deckp)" stroke="var(--wood-deep)" stroke-width="1.5"/>
+    <circle cx="280.4" cy="98" r="6.5" fill="none" stroke="var(--ink)" stroke-width="1.4"/>
+    <circle cx="280.4" cy="98" r="1.8" fill="var(--ink)"/>
+    <!-- nicho del refrigerador -->
+    <rect x="258" y="117.7" width="39.2" height="40.3" fill="var(--surface)" stroke="var(--wood-deep)" stroke-width="2"/>
+    <rect x="261" y="121" width="34" height="33.6" fill="var(--zinc)" opacity=".55"/>
+    <line x1="259.5" y1="121" x2="259.5" y2="154.6" stroke="var(--ink)" stroke-width="2"/>
+
+    <!-- pilares: actual (se corre) y nuevas posiciones -->
+    <circle cx="240.6" cy="106.8" r="6" fill="none" stroke="var(--warn)" stroke-width="1.4" stroke-dasharray="2 2"/>
+    <path d="M240.6 114 V158" stroke="var(--warn)" stroke-width="1.2" fill="none" marker-end="url(#arr)"/>
+    <defs><marker id="arr" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 Z" fill="var(--warn)"/></marker></defs>
+    <rect x="238" y="163.8" width="5.2" height="5.2" fill="var(--wood-deep)"/>
+    <rect x="238" y="273" width="5.2" height="5.2" fill="var(--wood-deep)"/>
+    <rect x="238" y="457.8" width="5.2" height="5.2" fill="var(--wood-deep)"/>
+
+    <!-- área techada -->
+    <path d="M90 46 H297.2 V298 H353.2 V606 H90 V460.4 H211.5 V135.6 H90 Z" fill="none" stroke="var(--wood)" stroke-width="1.6" stroke-dasharray="7 5"/>
+    <!-- canaleta de aguas lluvias + bajada -->
+    <path d="M90 137.5 H209.6 V458" fill="none" stroke="var(--zinc)" stroke-width="2.4"/>
+    <circle cx="236" cy="458" r="3" fill="var(--zinc)"/>
+    <path d="M209.6 458 H236" stroke="var(--zinc)" stroke-width="2.4"/>
+
+    <!-- estar en U -->
+    <rect x="146" y="560" width="106.4" height="44.8" rx="3" fill="none" stroke="var(--ink)" stroke-width="1.4"/>
+    <rect x="261.4" y="468.8" width="47" height="106.4" rx="3" fill="none" stroke="var(--ink)" stroke-width="1.4"/>
+    <rect x="90" y="468.8" width="47" height="106.4" rx="3" fill="none" stroke="var(--ink)" stroke-width="1.4"/>
+    <rect x="175.4" y="496.8" width="47.6" height="44.8" rx="2" fill="none" stroke="var(--ink)" stroke-width="1.4"/>
+    <circle cx="108.5" cy="590.3" r="11.8" fill="none" stroke="var(--pasto)" stroke-width="1.4"/>
+    <circle cx="339.2" cy="313.7" r="11.8" fill="none" stroke="var(--pasto)" stroke-width="1.4"/>
+
+    <!-- contorno -->
+    <path d="M90 46 H297.2 V298 H353.2 V606 H90 Z" class="outwall"/>
+    <!-- vanos de la casa -->
+    <line x1="297.2" y1="176.5" x2="297.2" y2="258.8" stroke="var(--glass)" stroke-width="6"/>
+    <line x1="353.2" y1="332.7" x2="353.2" y2="440.2" stroke="var(--glass)" stroke-width="6"/>
+    <line x1="353.2" y1="484.5" x2="353.2" y2="606" stroke="var(--wood)" stroke-width="6"/>
+    <line x1="349" y1="443" x2="349" y2="604" stroke="var(--ink)" stroke-width="1" stroke-dasharray="3 2"/>
+
+    <!-- rótulos -->
+    <text x="128" y="66" text-anchor="middle" class="zonesub">mesón</text>
+    <text x="193.6" y="94" text-anchor="middle" class="zonesub">parrilla</text>
+    <text x="250" y="66" text-anchor="middle" class="zonesub">mesón</text>
+    <text x="320" y="100" class="zonesub">lavacopas</text>
+    <text x="320" y="142" class="zonesub">refrigerador</text>
+    <text x="193" y="38" text-anchor="middle" class="zonelbl">QUINCHO TECHADO</text>
+    <text x="160" y="298" text-anchor="middle" transform="rotate(-90 160 298)" class="zonelbl">PASTO SINTÉTICO</text>
+    <text x="176" y="298" text-anchor="middle" transform="rotate(-90 176 298)" class="zonesub">5,80 × 2,50 · al aire libre</text>
+    <text x="268" y="230" text-anchor="middle" transform="rotate(-90 268 230)" class="zonelbl">PASILLO</text>
+    <text x="222" y="487" text-anchor="middle" class="zonelbl">ESTAR</text>
+    <text x="199" y="522" text-anchor="middle" class="zonesub">mesa</text>
+    <text x="231" y="110" text-anchor="end" class="zonesub" style="fill:var(--warn)">pilar actual</text>
+    <text x="52" y="326" text-anchor="middle" transform="rotate(-90 52 326)" class="zonesub" letter-spacing="3">M U R O</text>
+    <text x="193" y="2" text-anchor="middle" class="zonesub" letter-spacing="3">F O N D O</text>
+    <text x="222" y="664" text-anchor="middle" class="zonesub" letter-spacing="3">M U R O  T E R R A Z A</text>
+    <text x="380" y="222" class="zonesub">dormitorio</text>
+    <text x="368" y="390" class="zonesub">ventanal</text>
+    <text x="368" y="550" class="zonesub">bodega</text>
+    <text x="368" y="562" class="zonesub">(corredera)</text>
+
+    <!-- cotas -->
+    <g class="dim">
+      <line x1="72" y1="46" x2="72" y2="606"/><line x1="67" y1="46" x2="77" y2="46"/><line x1="67" y1="606" x2="77" y2="606"/>
+      <line x1="90" y1="24" x2="297.2" y2="24"/><line x1="90" y1="19" x2="90" y2="29"/><line x1="297.2" y1="19" x2="297.2" y2="29"/>
+      <line x1="90" y1="630" x2="353.2" y2="630"/><line x1="90" y1="625" x2="90" y2="635"/><line x1="353.2" y1="625" x2="353.2" y2="635"/>
+      <line x1="98" y1="135.6" x2="98" y2="460.4"/><line x1="94" y1="135.6" x2="102" y2="135.6"/><line x1="94" y1="460.4" x2="102" y2="460.4"/>
+      <line x1="80" y1="46" x2="80" y2="135.6"/><line x1="76" y1="135.6" x2="84" y2="135.6"/>
+      <line x1="314" y1="46" x2="314" y2="298"/><line x1="310" y1="46" x2="318" y2="46"/><line x1="310" y1="298" x2="318" y2="298"/>
+      <line x1="372" y1="298" x2="372" y2="606"/><line x1="368" y1="298" x2="376" y2="298"/><line x1="368" y1="606" x2="376" y2="606"/>
+    </g>
+    <text x="64" y="330" text-anchor="middle" transform="rotate(-90 64 330)" class="dimtxt">10,00</text>
+    <text x="193" y="20" text-anchor="middle" class="dimtxt">3,70</text>
+    <text x="222" y="645" text-anchor="middle" class="dimtxt">4,70</text>
+    <text x="108" y="300" text-anchor="middle" transform="rotate(-90 108 300)" class="dimtxt">5,80</text>
+    <text x="85" y="95" text-anchor="middle" transform="rotate(-90 85 95)" class="dimtxt">1,60</text>
+    <text x="323" y="180" text-anchor="middle" transform="rotate(-90 323 180)" class="dimtxt">4,50</text>
+    <text x="384" y="460" text-anchor="middle" transform="rotate(-90 384 460)" class="dimtxt">5,50</text>
+
+    <!-- escala -->
+    <g>
+      <line x1="90" y1="694" x2="202" y2="694" stroke="var(--ink)" stroke-width="1.5"/>
+      <line x1="90" y1="689" x2="90" y2="699" stroke="var(--ink)" stroke-width="1.5"/>
+      <line x1="146" y1="690" x2="146" y2="698" stroke="var(--ink)" stroke-width="1.5"/>
+      <line x1="202" y1="689" x2="202" y2="699" stroke="var(--ink)" stroke-width="1.5"/>
+      <text x="90" y="684" class="dimtxt">0</text><text x="142" y="684" class="dimtxt">1</text><text x="196" y="684" class="dimtxt">2 m</text>
+    </g>
+  </svg>
+  </div>
+
+  <div>
+    <ul class="legend">
+      <li><span class="chip" style="background:var(--deck-fill);border-color:var(--wood-deep)"></span>
+        <div><b>Quincho de obra en L</b><span>Corrida de 3,70 × 0,60 m contra el fondo: mesón, parrilla de obra con campana y mesón. La L va pegada a la casa: lavacopas (0,60 × 0,67 m) y, al final, el nicho del refrigerador.</span></div></li>
+      <li><span class="chip" style="background:var(--surface);border:2px solid var(--wood-deep)"></span>
+        <div><b>Nicho del refrigerador</b><span>Para el refrigerador actual de 0,60 × 0,64 × 1,70 m, con 3 cm de holgura por lado y ventilación arriba. La puerta abre hacia el pasillo.</span></div></li>
+      <li><span class="chip" style="background:transparent;border:1.6px dashed var(--wood)"></span>
+        <div><b>Bajo techo</b><span>Techo fijo opaco sobre toda la pérgola y un techo nuevo sobre el quincho, de muro a muro y hasta 1,60 m del fondo. Lleva canaleta y una bajada por el pilar de la terraza.</span></div></li>
+      <li><span class="chip" style="background:var(--porc-fill);border-color:var(--porc-line)"></span>
+        <div><b>Porcelanato 60 × 60</b><span>En todo lo techado, incluida la zona del quincho de muro a muro. Greige tipo cemento, antideslizante.</span></div></li>
+      <li><span class="chip" style="background:var(--pasto-fill);border-color:var(--pasto)"></span>
+        <div><b>Pasto sintético</b><span>5,80 × 2,50 m contra el muro, desde donde termina el techo del quincho. Es el pasto actual, recortado y reinstalado.</span></div></li>
+      <li><span class="chip" style="background:transparent;border:1.4px dashed var(--warn);border-radius:50%"></span>
+        <div><b>Pilar que se corre</b><span>Hoy está a 1,04 m del fondo y deja solo unos 30 cm frente a la L. Pasa a unos 2,15 m, más allá del refrigerador.</span></div></li>
+    </ul>
+  </div>
+  </div>
+</section>
+
+<section>
+  <p class="secnum">03 — QUINCHO</p>
+  <h2>Elevación frontal</h2>
+  <p class="lede">Visto desde el pasto, mirando al fondo. La parrilla de obra está al centro, con su
+  campana. El ducto atraviesa el techo y sale unos 70 cm por encima. A la derecha, más cerca, está la
+  columna del nicho del refrigerador, y detrás de ella queda la L con el lavacopas.</p>
+  <div class="panel">
+  <svg viewBox="0 0 520 380" role="img" aria-label="Elevación frontal del quincho techado">
+    <!-- muro del fondo -->
+    <rect x="88" y="164" width="296" height="176" fill="var(--ocre)" opacity=".35"/>
+    <!-- techo: tapacán y canaleta -->
+    <rect x="80" y="110" width="312" height="22" fill="var(--wood)" opacity=".85"/>
+    <rect x="80" y="132" width="312" height="7" fill="var(--zinc)"/>
+    <!-- ducto y sombrerete -->
+    <rect x="221.6" y="50" width="28.8" height="134" fill="var(--porc-fill)" stroke="var(--ink)" stroke-width="1.3"/>
+    <rect x="214" y="44" width="44" height="7" fill="var(--ink)"/>
+    <rect x="216" y="104" width="40" height="7" fill="var(--zinc)"/>
+    <!-- campana -->
+    <path d="M196 228 L276 228 L250.4 184 L221.6 184 Z" fill="var(--porc-fill)" stroke="var(--ink)" stroke-width="1.4"/>
+    <!-- cuerpo central -->
+    <rect x="196" y="228" width="80" height="112" fill="var(--porc-fill)" stroke="var(--ink)" stroke-width="1.5"/>
+    <rect x="204" y="236" width="64" height="40" fill="var(--ink)" opacity=".88"/>
+    <line x1="209" y1="262" x2="263" y2="262" stroke="var(--bg)" stroke-width="2"/>
+    <line x1="209" y1="270" x2="263" y2="270" stroke="var(--bg)" stroke-width="2"/>
+    <rect x="204" y="295" width="64" height="40" fill="var(--wood-deep)" opacity=".5"/>
+    <!-- mesones -->
+    <rect x="88" y="271" width="108" height="69" fill="url(#deckp2)"/>
+    <rect x="276" y="271" width="108" height="69" fill="url(#deckp2)"/>
+    <defs><pattern id="deckp2" width="10" height="10" patternUnits="userSpaceOnUse"><rect width="10" height="10" fill="var(--deck-fill)"/><line x1="0" y1="0" x2="0" y2="10" stroke="var(--deck)" stroke-width="1.3"/></pattern></defs>
+    <line x1="124" y1="276" x2="124" y2="334" stroke="var(--ink)" stroke-width="1"/>
+    <line x1="160" y1="276" x2="160" y2="334" stroke="var(--ink)" stroke-width="1"/>
+    <line x1="306" y1="276" x2="306" y2="334" stroke="var(--ink)" stroke-width="1"/>
+    <rect x="84" y="266" width="114" height="6" fill="var(--porc-line)" stroke="var(--ink)" stroke-width="1.2"/>
+    <rect x="274" y="266" width="112" height="6" fill="var(--porc-line)" stroke="var(--ink)" stroke-width="1.2"/>
+    <!-- columna del refrigerador (más cerca) -->
+    <rect x="328" y="181.6" width="56" height="158.4" fill="url(#deckp2)" stroke="var(--wood-deep)" stroke-width="1.6"/>
+    <rect x="328" y="181.6" width="56" height="13" fill="var(--deck)"/>
+    <!-- pilar corrido (en primer plano) -->
+    <rect x="299.5" y="139" width="7" height="201" fill="var(--wood)" stroke="var(--wood-deep)" stroke-width="1"/>
+    <!-- piso -->
+    <line x1="56" y1="340" x2="470" y2="340" stroke="var(--ink)" stroke-width="2.5"/>
+    <!-- cotas -->
+    <g class="dim">
+      <line x1="88" y1="358" x2="384" y2="358"/><line x1="88" y1="354" x2="88" y2="362"/><line x1="384" y1="354" x2="384" y2="362"/>
+      <line x1="60" y1="268" x2="60" y2="340"/><line x1="56" y1="268" x2="64" y2="268"/>
+      <line x1="44" y1="132" x2="44" y2="340"/><line x1="40" y1="132" x2="48" y2="132"/><line x1="40" y1="340" x2="48" y2="340"/>
+      <line x1="410" y1="181.6" x2="410" y2="340"/><line x1="406" y1="181.6" x2="414" y2="181.6"/><line x1="406" y1="340" x2="414" y2="340"/>
+    </g>
+    <text x="236" y="374" text-anchor="middle" class="dimtxt">3,70</text>
+    <text x="54" y="306" text-anchor="middle" transform="rotate(-90 54 306)" class="dimtxt">0,90</text>
+    <text x="38" y="240" text-anchor="middle" transform="rotate(-90 38 240)" class="dimtxt">2,60 techo</text>
+    <text x="422" y="262" text-anchor="middle" transform="rotate(-90 422 262)" class="dimtxt">1,98 nicho</text>
+    <!-- rótulos -->
+    <text x="262" y="36" class="zonesub">ducto sobre el techo</text>
+    <text x="96" y="104" class="zonesub">techo fijo + canaleta</text>
+    <text x="100" y="196" class="zonesub">muro: granulado ocre</text>
+    <text x="142" y="258" text-anchor="middle" class="zonesub">parrilla →</text>
+    <text x="392" y="158" class="zonesub">refrigerador</text>
+    <text x="392" y="170" class="zonesub">(lavacopas detrás)</text>
+  </svg>
+  </div>
+</section>
+
+<section>
+  <p class="secnum">04 — MATERIALIDAD</p>
+  <h2>Esquema A, tierra cálida</h2>
+  <p class="lede">Elegido. Los muros perimetrales van con la misma pintura granulada ocre de la casa, en
+  vez del panel PVC, así todo el patio queda envuelto en un solo color. La madera queda en la pérgola,
+  los muebles y los frentes del quincho.</p>
+  <div class="swatches">
+    <div class="sw"><div class="c" style="background:linear-gradient(135deg,#CFC9BE 0 50%,#C3BDB2 50%)"></div><div class="t"><b>Porcelanato greige 60×60</b><span>Antideslizante, tipo cemento. En todo lo techado.</span></div></div>
+    <div class="sw"><div class="c" style="background:radial-gradient(circle at 30% 30%,#D2B06A,#B8964F)"></div><div class="t"><b>Granulado ocre</b><span>Muros perimetrales, igual que la casa.</span></div></div>
+    <div class="sw"><div class="c" style="background:repeating-linear-gradient(90deg,#7B5F45 0 10px,#8A6C4F 10px 20px)"></div><div class="t"><b>Deck PVC castaño</b><span>Frentes de mesones y nicho del refrigerador.</span></div></div>
+    <div class="sw"><div class="c" style="background:#E8E3D7"></div><div class="t"><b>Estuco blanco hueso</b><span>Cuerpo de la parrilla, campana y ducto.</span></div></div>
+    <div class="sw"><div class="c" style="background:linear-gradient(135deg,#46433F,#5A5651)"></div><div class="t"><b>Cubierta gris piedra</b><span>Porcelánico o granito flameado.</span></div></div>
+    <div class="sw"><div class="c" style="background:linear-gradient(160deg,#D2A570,#B0824F)"></div><div class="t"><b>Pino existente</b><span>Pérgola, cielo y muebles del estar.</span></div></div>
+  </div>
+</section>
+
+<section>
+  <p class="secnum">05 — PROPUESTAS</p>
+  <h2>Iluminación y decoración</h2>
+  <p class="lede">Las dos se comparan en vivo en el recorrido 3D (teclas L y E) contra la situación
+  base. Usan blanco cálido de unos 2700 K, en capas, en vez de un solo tipo de luz.</p>
+  <div class="cards">
+    <div class="card"><h3>Iluminación en tres capas</h3>
+      <ul>
+        <li><b>Ambiente:</b> cuatro apliques que iluminan hacia arriba y hacia abajo en el muro largo, y LED oculto sobre la viga de la pérgola que ilumina el cielo de tablas.</li>
+        <li><b>Trabajo:</b> LED bajo el vuelo de las cubiertas, dos focos sobre los mesones y luz bajo la campana.</li>
+        <li><b>Acento:</b> zócalo de LED que hace "flotar" los mesones, y balizas bajas en el pasillo.</li>
+      </ul></div>
+    <div class="card"><h3>Decoración sobria</h3>
+      <ul>
+        <li><b>Alfombra exterior</b> que delimita el estar.</li>
+        <li><b>Cojines</b> terracota, oliva y mostaza sobre los sillones negros.</li>
+        <li><b>Maceteros de fibrocemento</b> con un olivo y gramíneas: vegetación puntual, piso parejo.</li>
+        <li><b>Faroles de vela</b> en el piso y en la mesa.</li>
+      </ul></div>
+  </div>
+</section>
+
+<section>
+  <p class="secnum">06 — PARTIDAS A COTIZAR</p>
+  <h2>Qué se pide cotizar</h2>
+  <p class="lede">Cantidades sacadas de la planta y de las medidas de terreno. Por favor separen en cada
+  partida los <b>materiales</b> y la <b>mano de obra</b>, e indiquen el plazo. No hace falta cotizar todo:
+  cada especialidad puede cotizar solo lo suyo.</p>
+
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th>Partida</th><th>Especificación</th><th style="text-align:right">Cantidad</th></tr></thead>
+    <tbody>
+      <tr class="group"><td colspan="3">Obra: quincho, pisos y muros</td></tr>
+      <tr><td><b>Parrilla de obra, campana y ducto</b></td><td>Cuerpo central estucado de 1,00 × 0,66 m, con ladrillo refractario en el hogar y leñera abajo. Campana estucada. Ducto de unos 1,6 m que atraviesa el techo nuevo, con collarín, sobresaliendo unos 0,7 m. Dejar entre 2,5 y 5 cm de aire entre el ducto y cualquier madera.</td><td class="num qty">1 un</td></tr>
+      <tr><td><b>Parrilla de fierro empotrable</b></td><td>Fogón con parrilla de altura regulable, de unos 80 cm de boca.</td><td class="num qty">1 un</td></tr>
+      <tr><td><b>Mesones con puertas de guardado</b></td><td>Corrida de 3,70 m contra el fondo más la L de 0,65 m junto a la casa; 0,60 m de fondo y 0,90 m de alto. Frentes en deck PVC castaño y cubierta porcelánica o de granito gris oscuro.</td><td class="num qty">4,35 ml · cubierta 2,9 m²</td></tr>
+      <tr><td><b>Nicho del refrigerador</b></td><td>Al final de la L, con costados y mueble superior en deck. Para un refrigerador de 0,60 × 0,64 × 1,70 m, con 3 cm de holgura por lado y ventilación arriba. Medida interior de unos 0,66 × 0,70 × 1,82 m.</td><td class="num qty">1 un</td></tr>
+      <tr><td><b>Porcelanato 60 × 60</b></td><td>Exterior antideslizante, greige tipo cemento, con adhesivo flexible. Va en todo lo techado, incluida la zona del quincho de muro a muro. Incluye retirar el piso actual.</td><td class="num qty">24,9 m² útiles · 27,5 m² de compra</td></tr>
+      <tr><td><b>Pasto sintético</b></td><td>Recortar y reinstalar el pasto actual a 5,80 × 2,50 m, con malla antimaleza, arena y adhesivo. Incluye retirar el árbol, las raíces y la jardinera, y dejar el piso nivelado.</td><td class="num qty">14,5 m²</td></tr>
+      <tr><td><b>Pintura granulada</b></td><td>Muros perimetrales en el mismo ocre granulado de la casa: hidrolavado, reparación de la base manchada, sellador y dos manos.</td><td class="num qty">≈ 40 m²</td></tr>
+
+      <tr class="group"><td colspan="3">Techo y carpintería</td></tr>
+      <tr><td><b>Techo fijo opaco</b><span class="tag est">por confirmar</span></td><td>Reemplazar las planchas transparentes, que gotean, por cubierta opaca, y hacer un techo nuevo sobre el quincho (de muro a muro y hasta 1,60 m del fondo), con viga y costaneras sin pilares en el pasto. Pendiente de al menos 15% hacia el pasto. Cielo de tablas a la vista. Las medidas exactas por sector se entregan aparte.</td><td class="num qty">Pasillo ≈ 14,2 m² · quincho ≈ 3,5 m² · terraza: parcial</td></tr>
+      <tr><td><b>Canaleta y bajada</b></td><td>Canaleta por el borde del techo hacia el pasto, y una bajada por el pilar de la terraza hasta la canaleta de piso.</td><td class="num qty">8 ml + 2,6 m</td></tr>
+      <tr><td><b>Correr el primer pilar</b></td><td>Hoy está a 1,04 m del fondo y a 0,97 m de la casa. Debe quedar a unos 2,15 m del fondo, más allá del refrigerador, o bien apoyar la viga en el muro. La solución la propone el carpintero.</td><td class="num qty">1 un</td></tr>
+
+      <tr class="group"><td colspan="3">Gasfitería</td></tr>
+      <tr><td><b>Lavacopas en la L</b></td><td>Cuba de acero inoxidable y monomando negro. Agua y desagüe desde la llave existente en el muro del fondo.</td><td class="num qty">1 un · ≈ 1,5 m de recorrido</td></tr>
+
+      <tr class="group"><td colspan="3">Electricidad e iluminación</td></tr>
+      <tr><td><b>Iluminación</b></td><td>Blanco cálido de unos 2700 K, apto para exterior: 4 apliques de muro que iluminan hacia arriba y hacia abajo; LED con perfil bajo el vuelo de las cubiertas, en el zócalo de los mesones y oculto sobre la viga de la pérgola; 2 focos sobre los mesones; 2 balizas bajas en el pasillo.</td><td class="num qty">4 + ≈ 18 m LED + 2 + 2</td></tr>
+      <tr><td><b>Circuitos y enchufes</b></td><td>Canalización desde el tablero o circuito existente, un enchufe para el refrigerador en la L y un enchufe en el mesón.</td><td class="num qty">2 enchufes</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="capt">Referencias técnicas para el techo: NCh1070 (pendientes de cubiertas) y NCh2083
+  (hojalatería y aguas lluvias). Para la plancha acanalada de zinc, Sodimac indica al menos 15% de
+  pendiente, 20% con lluvias moderadas y 25% con lluvias fuertes y viento.</p>
+</section>
+
+<section>
+  <p class="secnum">07 — MEDIDAS</p>
+  <h2>Medidas confirmadas en terreno</h2>
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th>Elemento</th><th style="text-align:right">Medida</th></tr></thead>
+    <tbody>
+      <tr><td>Largo total del patio</td><td class="num">10,00 m</td></tr>
+      <tr><td>Ancho en el fondo / en la casa</td><td class="num">3,70 / 4,70 m</td></tr>
+      <tr><td>Quiebre de la casa, desde el fondo <span class="tag">ajustado</span></td><td class="num">4,50 m</td></tr>
+      <tr><td>Ventana del dormitorio (a 2,33 m del fondo)</td><td class="num">1,47 × 1,45 m</td></tr>
+      <tr><td>Muro entre el quiebre y el ventanal</td><td class="num">0,62 m</td></tr>
+      <tr><td>Ventanal</td><td class="num">1,92 × 2,02 m</td></tr>
+      <tr><td>Muro entre el ventanal y la bodega</td><td class="num">0,79 m</td></tr>
+      <tr><td>Puerta de la bodega (corredera, colgada)</td><td class="num">2,17 × 2,20 m</td></tr>
+      <tr><td>Primer pilar: al fondo / a la casa</td><td class="num">1,04 / 0,97 m</td></tr>
+      <tr><td>Vuelo de la pérgola sobre el pasto</td><td class="num">0,50 – 0,53 m</td></tr>
+      <tr><td>Refrigerador (ancho × fondo × alto)</td><td class="num">0,60 × 0,64 × 1,70 m</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="capt">El tramo ancho de la casa suma 5,50 m (0,62 + 1,92 + 0,79 + 2,17). Para respetar los
+  10,00 m del croquis, el quiebre queda a 4,50 m y no a 4,60. Si el largo real es 10,10 m, se corrige.</p>
+</section>
+
+<section>
+  <p class="secnum">08 — CÓMO COTIZAR</p>
+  <h2>Lo que necesitamos en la cotización</h2>
+  <div class="next">
+    <p><b>1. Materiales y mano de obra separados</b> en cada partida, con marca o especificación de los
+    materiales principales: porcelanato, deck, cubierta del techo y parrilla.</p>
+    <p><b>2. Plazo estimado</b> y si la obra se puede hacer por etapas (por ejemplo, primero el techo y
+    después el quincho y los pisos).</p>
+    <p><b>3. Para el techo:</b> la pendiente que proponen, el tipo de cubierta, cómo resuelven el paso
+    del ducto de la campana y si la estructura actual de la pérgola sirve o hay que reforzarla.</p>
+    <p><b>4. Cualquier diferencia con estos planos</b> que vean en terreno: medidas, niveles o desagües.</p>
+  </div>
+</section>
+
+<footer>QUINCHO EN L · PLANOS PARA COTIZAR · V4 · MEDIDAS EN METROS · VERIFICAR EN TERRENO ANTES DE CONSTRUIR</footer>
+</div>

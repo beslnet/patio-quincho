@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Quincho en L</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{ --bg:#EFEEE9; --surface:#FBFAF7; --ink:#26241F; --muted:#6E6A5F; --line:#D9D6CC; --wood:#A97B4F; --wood-deep:#7C5633; }
+@media (prefers-color-scheme: dark){
+  :root{ --bg:#1D1B17; --surface:#26241F; --ink:#ECE8DE; --muted:#A29C8D; --line:#3B3830; --wood:#C08F5F; --wood-deep:#D3A876; }
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Instrument Sans",system-ui,sans-serif;line-height:1.55}
+.wrap{max-width:720px;margin:0 auto;padding:48px 20px 64px}
+.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
+h1{font-family:Sora,system-ui,sans-serif;font-size:clamp(32px,7vw,46px);line-height:1.08;margin:0}
+.sub{color:var(--muted);margin:14px 0 32px;max-width:56ch}
+.links{display:grid;gap:14px}
+a.card{display:block;text-decoration:none;color:inherit;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--wood);border-radius:8px;padding:18px 20px;transition:transform .15s}
+a.card:hover{transform:translateY(-1px)}
+a.card:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+a.card b{display:block;font-family:Sora,system-ui,sans-serif;font-size:19px;margin-bottom:4px}
+a.card span{color:var(--muted);font-size:14.5px}
+a.card i{font-style:normal;color:var(--wood-deep);font-weight:600}
+.note{font-size:13px;color:var(--muted);margin-top:28px}
+@media (prefers-reduced-motion: reduce){ a.card{transition:none} }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="eyebrow">Remodelación de patio · octubre 2026</p>
+  <h1>Quincho en L</h1>
+  <p class="sub">Quincho de obra techado con parrilla, campana, lavacopas y refrigerador; techo fijo
+  sobre la pérgola; porcelanato en todo lo techado; pasto contra el muro y la terraza de estar.</p>
+  <div class="links">
+    <a class="card" href="planos-quincho-en-l.html">
+      <b>Planos para cotizar</b>
+      <span>Planta, elevación del quincho, materiales, medidas y partidas con cantidades. <i>Abrir →</i></span>
+    </a>
+    <a class="card" href="recorrido-quincho-3d.html">
+      <b>Recorrido 3D</b>
+      <span>Camina el patio en primera persona. En el celular: pulgar izquierdo camina, pulgar derecho mira. <i>Abrir →</i></span>
+    </a>
+  </div>
+  <p class="note">El recorrido 3D necesita internet y funciona mejor en Chrome o Safari.</p>
+</div>
+</body>
+</html>
