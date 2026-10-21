@@ -39,7 +39,6 @@
 
 <div id="opts">
   <button id="optWall" type="button">Muros: <b>pintura granulada</b> <kbd>M</kbd></button>
-  <button id="optGrass" type="button">Pasto: <b>5,80 m</b> <kbd>P</kbd></button>
   <button id="optRain" type="button">Lluvia: <b>no</b> <kbd>R</kbd></button>
   <button id="optLight" type="button">Iluminación: <b>arquitectónica</b> <kbd>L</kbd></button>
   <button id="optDeco" type="button">Decoración: <b>propuesta</b> <kbd>E</kbd></button>
@@ -58,7 +57,7 @@
       <span><kbd>W</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd></span><span>caminar · <kbd>Shift</kbd> para correr</span>
       <span><kbd>mouse</kbd></span><span>mirar (o arrastrar con clic)</span>
       <span><kbd>L</kbd> <kbd>E</kbd></span><span>comparar iluminación y decoración propuestas</span>
-      <span><kbd>M</kbd> <kbd>P</kbd></span><span>comparar muros y largo del pasto</span>
+      <span><kbd>M</kbd></span><span>comparar muros: pintura granulada o panel PVC</span>
       <span><kbd>R</kbd></span><span>hacer llover, para ver qué queda bajo techo</span>
       <span><kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd></span><span>vistas rápidas</span>
       <span><kbd>ESC</kbd></span><span>volver a este panel</span>
@@ -127,10 +126,10 @@ const tick = async (label) => { enterBtn.textContent = `Preparando el patio… $
 const WALL_H = 2.2, HOUSE_H = 2.6;
 const JOG = 4.5;                                   // quiebre: 10,00 − (0,62 + 1,92 + 0,79 + 2,17)
 const PX = 2.69;                                   // línea de pilares: 0,97 m desde la casa
-const POSTS_Z = [1.085, 4.1, 7.4];                 // primer pilar a 1,04 m del fondo (cara)
+const POSTS_Z = [1.045, 4.1, 7.4];                 // primer pilar a 1,00 m del fondo (cara)
 const OVER = .52;                                  // vuelo de la pérgola sobre el pasto
-const GRASS_Z0 = 1.6;                              // el pasto parte donde termina el techo del quincho
-const GRASS_LEN = [5.8, 5.2];
+const GRASS_Z0 = 1.75;                             // el pasto parte donde termina el techo del quincho
+const GRASS_LEN = [5.2];                           // medido en terreno
 const WIN = { z0: 2.33, z1: 3.80, y0: .85, y1: 2.30 };            // dormitorio 1,47 × 1,45
 const VEN = { z0: JOG + .62, z1: JOG + .62 + 1.92, y1: 2.02 };     // ventanal 1,92 × 2,02
 const DOOR = { z0: VEN.z1 + .79, w: 2.17, h: 2.2 };                // bodega 2,17 × 2,20
@@ -1050,19 +1049,17 @@ function applyOptions(){
   rain.visible = ui.rain;
   $('optRain').innerHTML = `Lluvia: <b>${ui.rain ? 'sí' : 'no'}</b> <kbd>R</kbd>`;
   const zs = blades.userData.z; let n = 0; while (n < zs.length && zs[n] < end) n++; blades.count = n;
-  $('optGrass').innerHTML = `Pasto: <b>${len.toFixed(2).replace('.', ',')} m</b> <kbd>P</kbd>`;
   gtao.enabled = ui.quality === 'alta';
   $('optQual').innerHTML = `Calidad: <b>${ui.quality}</b> <kbd>Q</kbd>`;
 }
 const toggle = {
   M(){ ui.wall = ui.wall === 'pvc' ? 'granulado' : 'pvc'; },
-  P(){ ui.grass = ui.grass === GRASS_LEN[0] ? GRASS_LEN[1] : GRASS_LEN[0]; },
   R(){ ui.rain = !ui.rain; },
   L(){ ui.light = ui.light === 'arq' ? 'guirnaldas' : 'arq'; },
   E(){ ui.deco = !ui.deco; },
   Q(){ ui.quality = ui.quality === 'alta' ? 'normal' : 'alta'; },
 };
-for (const [id, k] of [['optWall','M'],['optGrass','P'],['optLight','L'],['optDeco','E'],['optRain','R'],['optQual','Q']])
+for (const [id, k] of [['optWall','M'],['optLight','L'],['optDeco','E'],['optRain','R'],['optQual','Q']])
   $(id).onclick = () => { toggle[k](); applyOptions(); };
 for (const b of document.querySelectorAll('#opts button')) b.addEventListener('pointerdown', e => e.stopPropagation());
 
